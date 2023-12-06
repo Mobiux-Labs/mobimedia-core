@@ -66,9 +66,15 @@ test('Throws an error for Cloudinary URL without a version', (t) => {
   const s3PublicUrl = 'https://s3HostedMedia.mydomain.com';
   const s3CloudinaryPath = '/cloudinary/res/cloudName/image/upload';
 
-  t.throws(() => {
-    convertCloudinaryToS3(cloudinaryUrl, s3PublicUrl, s3CloudinaryPath);
-  }, { instanceOf: Error, message: 'URL Conversion Failed due to media version not present.' });
+  t.throws(
+    () => {
+      convertCloudinaryToS3(cloudinaryUrl, s3PublicUrl, s3CloudinaryPath);
+    },
+    {
+      instanceOf: Error,
+      message: 'URL Conversion Failed due to media version not present.',
+    }
+  );
 });
 
 // Test for URL without extension
@@ -78,7 +84,10 @@ test('Throws an error for Cloudinary URL without an extension', (t) => {
   const s3PublicUrl = 'https://s3HostedMedia.mydomain.com';
   const s3CloudinaryPath = '/cloudinary/res/cloudName/image/upload';
 
-  t.throws(() => {
-    convertCloudinaryToS3(cloudinaryUrl, s3PublicUrl, s3CloudinaryPath);
-  }, { instanceOf: Error, message: 'Media extension not found in URL.' });
+  t.throws(
+    () => {
+      convertCloudinaryToS3(cloudinaryUrl, s3PublicUrl, s3CloudinaryPath);
+    },
+    { instanceOf: Error, message: 'Media extension not found in URL.' }
+  );
 });

@@ -46,15 +46,24 @@ test('Get Cloudinary URL and transform it to S3 (fetch from S3 - Cloudinary Back
 // Test case for MobiMediaConfig with an invalid subdomain
 test('MobiMediaConfig throws an error for an invalid subdomain', (t) => {
   const subDomain = '';
-  t.throws(() => {
-    MobiMediaConfig(subDomain);
-  }, { instanceOf: Error, message: 'subDomain not configured.' });
+  t.throws(
+    () => {
+      MobiMediaConfig(subDomain);
+    },
+    { instanceOf: Error, message: 'subDomain not configured.' }
+  );
 });
 
 // Test case for MobiMediaConfig with subdomain containing 'http'
 test('MobiMediaConfig throws an error for subdomain containing http', (t) => {
   const subDomain = 'http://test.mobimedia.ai';
-  t.throws(() => {
-    MobiMediaConfig(subDomain);
-  }, { instanceOf: Error, message: 'SubDomain should not include http or https.' });
+  t.throws(
+    () => {
+      MobiMediaConfig(subDomain);
+    },
+    {
+      instanceOf: Error,
+      message: 'SubDomain should not include http or https.',
+    }
+  );
 });
