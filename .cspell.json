@@ -21,7 +21,12 @@
     "sandboxed",
     "transpiled",
     "typedoc",
-    "untracked"
+    "untracked",
+    "mobi",
+    "mobimedia",
+    "cloudinary",
+    "letterboxing",
+    "webp"
   ],
   "flagWords": [],
   "ignorePaths": [
