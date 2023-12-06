@@ -78,6 +78,8 @@ The `convertCloudinaryToS3Url` parameter is an optional object that allows confi
 |`lb`|String, "w,h"|Add letterboxing effect to images, by scaling them to width, height while maintaining the aspect ratio and filling the rest with black or `background`.|
 |`background`|String|Add background color via name (red) or hex value (%23ff0000). Don't forget to escape # as `%23`.|
 
+Feel free to raise any issues on our [Github Issues](https://github.com/Mobiux-Labs/mobimedia-core/issues) page if you find any.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](/LICENSE) file for details.
