@@ -1,0 +1,238 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@mobimedia/core</title>
+	<meta name="description" content="Documentation for @mobimedia/core">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">@mobimedia/core</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1>@mobimedia/core</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#mobimediacore" id="mobimediacore" style="color: inherit; text-decoration: none;">
+					<h1>@mobimedia/core</h1>
+				</a>
+				<p>Optimize your images on the fly with MobiMedia.ai. This is a SDK for converting and appending image optimization parameters to the image src making it optimized as per the client devices.</p>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h2>Installation</h2>
+				</a>
+				<pre><code class="language-bash">npm install @mobimedia/core
+</code></pre>
+				<a href="#usage-for-s3" id="usage-for-s3" style="color: inherit; text-decoration: none;">
+					<h2>Usage for S3</h2>
+				</a>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> { MobiMediaConfig } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@mobimedia/core&quot;</span>;
+
+<span class="hljs-keyword">const</span> s3Transformer = MobiMediaConfig(<span class="hljs-string">&quot;test.mobimedia.ai&quot;</span>)
+<span class="hljs-keyword">const</span> src = s3Transformer.url(<span class="hljs-string">&quot;https://s3HostedMedia.mydomain.com/test.png&quot;</span>, {
+  <span class="hljs-attr">w</span>: <span class="hljs-number">100</span>,
+});
+<span class="hljs-comment">// =&gt; https://test.mobimedia.ai/test.png?quality=70&amp;format=webp&amp;w=100</span>
+</code></pre>
+				<a href="#usage-for-cloudinary-url-conversion-to-s3" id="usage-for-cloudinary-url-conversion-to-s3" style="color: inherit; text-decoration: none;">
+					<h2>Usage for Cloudinary URL Conversion to S3</h2>
+				</a>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> { MobiMediaConfig } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@mobimedia/core&quot;</span>;
+
+<span class="hljs-keyword">const</span> s3 = MobiMediaConfig(<span class="hljs-string">&#x27;test.mobimedia.ai&#x27;</span>, {
+  <span class="hljs-attr">s3PublicUrl</span>: <span class="hljs-string">&#x27;https://s3HostedMedia.mydomain.com&#x27;</span>,
+  <span class="hljs-attr">s3CloudinaryPath</span>: <span class="hljs-string">&#x27;/cloudinary/res/cloudName/image/upload&#x27;</span>,
+});
+
+<span class="hljs-keyword">const</span> src = s3.url(
+  <span class="hljs-string">&#x27;https://cloudinaryHostedMedia.mydomain.com/cloudName/image/upload/c_fill,f_auto,g_auto,w_640/v1674128459/test/test.jpg&#x27;</span>,
+  {
+    <span class="hljs-attr">w</span>: <span class="hljs-number">100</span>,
+  }
+);
+<span class="hljs-comment">// =&gt; https://test.mobimedia.ai/cloudinary/res/cloudName/image/upload/test/test/1674128459.jpg?quality=70&amp;format=webp&amp;w=100</span>
+</code></pre>
+				<a href="#mobimediaconfig-options" id="mobimediaconfig-options" style="color: inherit; text-decoration: none;">
+					<h2><code>MobiMediaConfig</code> Options</h2>
+				</a>
+				<p>The <code>MobiMediaConfig</code> function provides options for configuring the MobiMedia.ai image optimization service. It takes the following parameters:</p>
+				<a href="#subdomain-required" id="subdomain-required" style="color: inherit; text-decoration: none;">
+					<h3><code>subDomain</code> (required)</h3>
+				</a>
+				<p>Type: <code>string</code></p>
+				<p>The <code>subDomain</code> parameter is a required string that represents the subdomain of the MobiMedia.ai service. This is a crucial configuration as it defines the specific MobiMedia.ai instance to be used for image optimization.</p>
+				<a href="#convertcloudinarytos3url-optional" id="convertcloudinarytos3url-optional" style="color: inherit; text-decoration: none;">
+					<h3><code>convertCloudinaryToS3Url</code> (optional)</h3>
+				</a>
+				<p>Type: <code>{ s3PublicUrl: string, s3CloudinaryPath: string }</code></p>
+				<p>Default: <code>{ s3PublicUrl: &#39;&#39;, s3CloudinaryPath: &#39;&#39; }</code></p>
+				<p>The <code>convertCloudinaryToS3Url</code> parameter is an optional object that allows configuring settings related to converting Cloudinary URLs to S3 URLs. It has the following properties:</p>
+				<ul>
+					<li><p><code>s3PublicUrl</code>: A string representing the public URL of the S3 bucket where the images will be stored.</p>
+					</li>
+					<li><p><code>s3CloudinaryPath</code>: A string representing the path within the S3 bucket where the converted images will be stored.</p>
+					</li>
+				</ul>
+				<a href="#image-url-supported-options" id="image-url-supported-options" style="color: inherit; text-decoration: none;">
+					<h2>Image <code>url</code> Supported Options</h2>
+				</a>
+				<table>
+					<thead>
+						<tr>
+							<th>URL Arg</th>
+							<th>Type</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td><code>w</code></td>
+							<td>Number</td>
+							<td>Max width of the image.</td>
+						</tr>
+						<tr>
+							<td><code>h</code></td>
+							<td>Number</td>
+							<td>Max height of the image.</td>
+						</tr>
+						<tr>
+							<td><code>quality</code></td>
+							<td>Number, 0-100</td>
+							<td>Image quality.</td>
+						</tr>
+						<tr>
+							<td><code>resize</code></td>
+							<td>String, &quot;w,h&quot;</td>
+							<td>A comma separated string of the target width and height in pixels. Crops the image.</td>
+						</tr>
+						<tr>
+							<td><code>crop_strategy</code></td>
+							<td>String, &quot;smart&quot;, &quot;entropy&quot;, &quot;attention&quot;</td>
+							<td>There are 3 automatic cropping strategies for use with <code>resize</code>: <ul><li><code>attention</code>: good results, ~70% slower</li><li><code>entropy</code>: mediocre results, ~30% slower</li><li><code>smart</code>: best results, ~50% slower</li></td>
+						</tr>
+						<tr>
+							<td><code>gravity</code></td>
+							<td>String</td>
+							<td>Alternative to <code>crop_strategy</code>. Crops are made from the center of the image by default, passing one of &quot;north&quot;, &quot;northeast&quot;, &quot;east&quot;, &quot;southeast&quot;, &quot;south&quot;, &quot;southwest&quot;, &quot;west&quot;, &quot;northwest&quot; or &quot;center&quot; will crop from that edge.</td>
+						</tr>
+						<tr>
+							<td><code>fit</code></td>
+							<td>String, &quot;w,h&quot;</td>
+							<td>A comma separated string of the target maximum width and height. Does not crop the image.</td>
+						</tr>
+						<tr>
+							<td><code>crop</code></td>
+							<td>Boolean|String, &quot;x,y,w,h&quot;</td>
+							<td>Crop an image by percentages x-offset, y-offset, width and height (x,y,w,h). Percentages are used so that you don’t need to recalculate the cropping when transforming the image in other ways such as resizing it. You can crop by pixel values too by appending <code>px</code> to the values. <code>crop=160px,160px,788px,788px</code> takes a 788 by 788 pixel square starting at 160 by 160.</td>
+						</tr>
+						<tr>
+							<td><code>zoom</code></td>
+							<td>Number</td>
+							<td>Zooms the image by the specified amount for high DPI displays. <code>zoom=2</code> produces an image twice the size specified in <code>w</code>, <code>h</code>, <code>fit</code> or <code>resize</code>. The quality is automatically reduced to keep file sizes roughly equivalent to the non-zoomed image unless the <code>quality</code> argument is passed.</td>
+						</tr>
+						<tr>
+							<td><code>webp</code></td>
+							<td>Boolean, 1</td>
+							<td>Load WebP format.</td>
+						</tr>
+						<tr>
+							<td><code>lb</code></td>
+							<td>String, &quot;w,h&quot;</td>
+							<td>Add letterboxing effect to images, by scaling them to width, height while maintaining the aspect ratio and filling the rest with black or <code>background</code>.</td>
+						</tr>
+						<tr>
+							<td><code>background</code></td>
+							<td>String</td>
+							<td>Add background color via name (red) or hex value (%23ff0000). Don&#39;t forget to escape # as <code>%23</code>.</td>
+						</tr>
+				</tbody></table>
+				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+					<h2>License</h2>
+				</a>
+				<p>This project is licensed under the MIT License - see the <a href="/LICENSE">LICENSE.md</a> file for details.</p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-function">
+						<a href="globals.html#mobimediaconfig" class="tsd-kind-icon">Mobi<wbr>Media<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-external">
+						<a href="globals.html#convertcloudinarytos3" class="tsd-kind-icon">convert<wbr>Cloudinary<wbr>ToS3</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
