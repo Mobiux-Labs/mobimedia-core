@@ -21,6 +21,25 @@ test('Converts a valid Cloudinary URL to a valid S3 URL', (t) => {
   );
 });
 
+// Test for a valid URL without directory
+test('Converts a valid Cloudinary URL without dir to a valid S3 URL', (t) => {
+  const cloudinaryUrl =
+    'https://res.cloudinary.com/cloudName/image/upload/v1676229010/test.jpg';
+  const s3PublicUrl = 'https://s3HostedMedia.mydomain.com';
+  const s3CloudinaryPath = '/cloudinary/res/cloudName/image/upload';
+
+  const result = convertCloudinaryToS3(
+    cloudinaryUrl,
+    s3PublicUrl,
+    s3CloudinaryPath
+  );
+
+  t.is(
+    result,
+    'https://s3HostedMedia.mydomain.com/cloudinary/res/cloudName/image/upload/test/1676229010.jpg'
+  );
+});
+
 // Test for a valid URL with default transformation structure
 test('Converts a valid Cloudinary URL with default transformation to a valid S3 URL', (t) => {
   const cloudinaryUrl =
@@ -37,6 +56,25 @@ test('Converts a valid Cloudinary URL with default transformation to a valid S3 
   t.is(
     result,
     'https://s3HostedMedia.mydomain.com/cloudinary/res/cloudName/image/upload/testDir/test/1673089681.jpg'
+  );
+});
+
+// Test for a valid URL with default transformation without dir structure
+test('Converts a valid Cloudinary URL with default transformation without dir to a valid S3 URL', (t) => {
+  const cloudinaryUrl =
+    'https://res.cloudinary.com/cloudName/image/upload/c_fill,f_auto,g_auto,w_640/v1673089681/test.jpg';
+  const s3PublicUrl = 'https://s3HostedMedia.mydomain.com';
+  const s3CloudinaryPath = '/cloudinary/res/cloudName/image/upload';
+
+  const result = convertCloudinaryToS3(
+    cloudinaryUrl,
+    s3PublicUrl,
+    s3CloudinaryPath
+  );
+
+  t.is(
+    result,
+    'https://s3HostedMedia.mydomain.com/cloudinary/res/cloudName/image/upload/test/1673089681.jpg'
   );
 });
 

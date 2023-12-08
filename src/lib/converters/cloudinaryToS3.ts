@@ -2,7 +2,7 @@ export default function convertCloudinaryToS3(
   cloudinaryUrl: string,
   s3PublicUrl: string,
   s3CloudinaryPath: string
-): string {
+) {
   // Not covering cases for <version>/<transformation> in URL struct as it's
   // not a formal Cloudinary structure
   // Not covering cases for incorrect extension media
@@ -31,9 +31,11 @@ export default function convertCloudinaryToS3(
   const mediaExt = mediaSplit.splice(mediaSplit.length - 1)[0]; // Get extension
 
   // Combining modified dirPath, modified media as dir, version with extension
-  const filePath = `${dirPathArr.join('/')}/${mediaSplit.join(
-    '.'
-  )}/${splitPaths[versionIdx].substring(1)}.${mediaExt}`;
+  const filePath = `${dirPathArr.length ? '/' : ''}${dirPathArr.join(
+    '/'
+  )}/${mediaSplit.join('.')}/${splitPaths[versionIdx].substring(
+    1
+  )}.${mediaExt}`;
 
-  return `${s3PublicUrl + s3CloudinaryPath}/${filePath}`;
+  return s3PublicUrl + s3CloudinaryPath + filePath;
 }

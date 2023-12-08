@@ -39,6 +39,7 @@ export const MobiMediaConfig = (
     customOptions: Record<string, string>,
     isConvertCloudinaryToS3: boolean
   ) => {
+    // For cases where users pass Cloudinary URL and don't want to convert to S3
     if (url.includes(_CLOUDINARY_URL) && !isConvertCloudinaryToS3)
       return customOptions;
 
