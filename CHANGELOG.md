@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.1](https://github.com/Mobiux-Labs/mobimedia-core/compare/v0.1.0...v0.1.1) (2023-12-08)
+
 ## [0.1.0](https://github.com/Mobiux-Labs/mobimedia-core/compare/v0.0.11...v0.1.0) (2023-12-07)
 
 ### [0.0.11](https://github.com/Mobiux-Labs/mobimedia-core/compare/v0.0.10...v0.0.11) (2023-12-07)
